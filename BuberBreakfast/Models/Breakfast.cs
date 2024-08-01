@@ -100,4 +100,16 @@ public class Breakfast
             request.Sweet,
             id);
     }
+
+    internal static ErrorOr<Breakfast> From(Guid id, Breakfast breakfast, RenameBreakfastRequest request)
+    {
+        return Create(
+            request.Name,
+            breakfast.Description,
+            breakfast.StartDateTime,
+            breakfast.EndDateTime,
+            breakfast.Savory,
+            breakfast.Sweet,
+            id);
+    }
 }

@@ -10,6 +10,7 @@ public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
     {
+        Console.WriteLine("IActionResult Problem(List<Error> errors) in ApiController");
         if (errors.All(e => e.Type == ErrorType.Validation))
         {
             var modelStateDictionary = new ModelStateDictionary();

@@ -2,8 +2,8 @@ POST http://localhost:5286/breakfasts
 Content-Type: application/json
 
 {
-    "name": "V",
-    "description": "",
+    "name": "eeeeeee",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
     "startDateTime": "2022-04-08T08:00:00",
     "endDateTime": "2022-04-08T11:00:00",
     "savory": [
@@ -19,4 +19,4 @@ Content-Type: application/json
 
 ###
 
-GET https://localhost:7094/Breakfasts/e35daaba-5a9e-43a2-9305-3dead8296fe0
+#GET https://localhost:7094/Breakfasts/e35daaba-5a9e-43a2-9305-3dead8296fe0

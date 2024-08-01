@@ -18,6 +18,15 @@ public static class Errors
 
         public static Error NotFound => Error.NotFound(
             code: "Breakfast.NotFound",
-            description: "Breakfast not found");
+            description: "Breakfast not found.");
+
+        public static Error Empty => Error.NotFound(
+            code: "Breakfast.Empty",
+            description: "The breakfast list is currently empty.");
+
+        public static Error NoBreakfastsFound => Error.NotFound(
+            code: "Breakfast.NoBreakfastsFound",
+            description: "No breakfasts matching your search criteria were found.");
+
     }
 }

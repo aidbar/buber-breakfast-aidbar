@@ -19,6 +19,7 @@ public class BreakfastsController : ApiController
     [HttpPost]
     public IActionResult CreateBreakfast(CreateBreakfastRequest request)
     {
+        Console.WriteLine("IActionResult CreateBreakfast(CreateBreakfastRequest request) in BreakfastsController");
         ErrorOr<Breakfast> requestToBreakfastResult = Breakfast.From(request);
 
         if (requestToBreakfastResult.IsError)
@@ -37,10 +38,22 @@ public class BreakfastsController : ApiController
     [HttpGet("{id:guid}")]
     public IActionResult GetBreakfast(Guid id)
     {
+        Console.WriteLine("IActionResult GetBreakfast(Guid id) in BreakfastsController");
         ErrorOr<Breakfast> getBreakfastResult = _breakfastService.GetBreakfast(id);
 
         return getBreakfastResult.Match(
             breakfast => Ok(MapBreakfastResponse(breakfast)),
+            errors => Problem(errors));
+    }
+
+    [HttpGet("all")]
+    public IActionResult GetAllBreakfasts()
+    {
+        Console.WriteLine("IActionResult GetAllBreakfasts() in BreakfastsController");
+        ErrorOr<List<Breakfast>> getAllBreakfastsResult = _breakfastService.GetAllBreakfasts();
+
+        return getAllBreakfastsResult.Match(
+            breakfast => Ok(getAllBreakfastsResult.Value.Select(MapBreakfastResponse)),
             errors => Problem(errors));
     }
 
@@ -60,6 +73,42 @@ public class BreakfastsController : ApiController
         return upsertBreakfastResult.Match(
             upserted => upserted.IsNewlyCreated ? CreatedAtGetBreakfast(breakfast) : NoContent(),
             errors => Problem(errors));
+    }
+
+    [HttpGet("search")]
+    public IActionResult SearchBreakfasts([FromQuery]string query)
+    {
+        ErrorOr<List<Breakfast>> searchBreakfastsResult = _breakfastService.SearchBreakfasts(query);
+
+        return searchBreakfastsResult.Match(
+            breakfasts => Ok(breakfasts.Select(MapBreakfastResponse)),
+            errors => Problem(errors));
+    }
+
+    [HttpPatch("{id:guid}")]
+    public IActionResult RenameBreakfast(Guid id, RenameBreakfastRequest request)
+    {
+        ErrorOr<Breakfast> getBreakfastResult = _breakfastService.GetBreakfast(id);
+        if (getBreakfastResult.IsError)
+        {
+            return Problem(getBreakfastResult.Errors);
+        }
+
+        var breakfast = getBreakfastResult.Value;
+        ErrorOr<Breakfast> requestToBreakfastResult = Breakfast.From(id, breakfast, request);
+
+        if (requestToBreakfastResult.IsError)
+        {
+            return Problem(requestToBreakfastResult.Errors);
+        }
+
+        var renamedBreakfast = requestToBreakfastResult.Value;
+        ErrorOr<Breakfast> renameBreakfastResult = _breakfastService.RenameBreakfast(id, renamedBreakfast);
+
+        return renameBreakfastResult.Match(
+            breakfast => NoContent(),
+            errors => Problem(errors));
+
     }
 
     [HttpDelete("{id:guid}")]
