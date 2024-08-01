@@ -31,7 +31,7 @@
     - [Update Breakfast Response](#update-breakfast-response)
   - [Rename Breakfast](#rename-breakfast)
     - [Rename Breakfast Request](#rename-breakfast-request)
-  - [Rename Breakfast Response](#rename-breakfast-response)
+    - [Rename Breakfast Response](#rename-breakfast-response)
   - [Delete Breakfast](#delete-breakfast)
     - [Delete Breakfast Request](#delete-breakfast-request)
     - [Delete Breakfast Response](#delete-breakfast-response)
@@ -284,7 +284,7 @@ PATCH /breakfasts/{{id}}
 }
 ```
 
-## Rename Breakfast Response
+### Rename Breakfast Response
 ```js
 204 No Content
 ```
