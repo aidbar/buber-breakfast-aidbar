@@ -2,11 +2,11 @@
 
 <img src="assets/BuberBreakfastUiUx.png" alt="drawing" width="1000"/>
 
- [![GitHub Stars](https://img.shields.io/github/stars/amantinband/buber-breakfast.svg)](https://github.com/amantinband/buber-breakfast/stargazers) [![GitHub license](https://img.shields.io/github/license/amantinband/buber-breakfast)](https://github.com/amantinband/buber-breakfast/blob/main/LICENSE)
+ [![GitHub Stars](https://img.shields.io/github/stars/aidbar/buber-breakfast-aidbar.svg)](https://github.com/aidbar/buber-breakfast-aidbar/stargazers) [![GitHub license](https://img.shields.io/github/license/aidbar/buber-breakfast-aidbar)](https://github.com/aidbar/buber-breakfast-aidbar/blob/main/LICENSE)
 
 ---
 
-### This is the source code of the [CRUD REST API from scratch using .NET 6 tutorial](https://youtu.be/PmDJIooZjBE)
+### This repository is based on the source code of the [CRUD REST API from scratch using .NET 6 tutorial](https://youtu.be/PmDJIooZjBE) by [amantinband](https://github.com/amantinband)
 
 </div>
 
@@ -23,9 +23,15 @@
   - [Get Breakfast](#get-breakfast)
     - [Get Breakfast Request](#get-breakfast-request)
     - [Get Breakfast Response](#get-breakfast-response)
+  - [Get All Breakfasts](#get-all-breakfasts)
+    - [Get All Breakfasts Request](#get-all-breakfasts-request)
+    - [Get All Breakfasts Response](#get-all-breakfasts-response)
   - [Update Breakfast](#update-breakfast)
     - [Update Breakfast Request](#update-breakfast-request)
     - [Update Breakfast Response](#update-breakfast-response)
+  - [Rename Breakfast](#rename-breakfast)
+    - [Rename Breakfast Request](#rename-breakfast-request)
+  - [Rename Breakfast Response](#rename-breakfast-response)
   - [Delete Breakfast](#delete-breakfast)
     - [Delete Breakfast Request](#delete-breakfast-request)
     - [Delete Breakfast Response](#delete-breakfast-response)
@@ -42,8 +48,7 @@ Loving it? Show your support by giving this project a star!
 
 # Overview
 
-In the tutorial, we build a CRUD REST API from scratch using .NET 6.
-As you would expect, the backend system supports Creating, Reading, Updating and Deleting breakfasts.
+This project is based on the [.NET 6 CRUD REST API tutorial](https://youtu.be/PmDJIooZjBE) by [amantinband](https://github.com/amantinband) and the original repository can be found [here](https://github.com/amantinband/buber-breakfast). In addition to the `Create Breakfast` (HTTP POST), `Get Breakfast` (HTTP GET), `Update Breakfast` (HTTP PUT) and `Delete Breakfast` (HTTP DELETE) API endpoints presented in the tutorial, this project also contains `Get All Breakfasts` (HTTP GET), `Search Breakfasts` (HTTP GET) and `Rename Breakfast` (HTTP PATCH) endpoints. In addition, this project contains other minor code modifications, such as additional error definitions in `ServiceErrors/Errors.Breakfast.cs`.
 
 # Service Architecture
 
@@ -71,10 +76,9 @@ As you would expect, the backend system supports Creating, Reading, Updating and
 
 # Usage
 
-Simply `git clone https://github.com/amantinband/buber-breakfast` and `dotnet run --project BuberBreakfast`.
+Simply `git clone https://github.com/aidbar/buber-breakfast-aidbar` and `dotnet run --project BuberBreakfast`.
 
 # API Definition
-
 
 ## Create Breakfast
 
@@ -133,7 +137,6 @@ Location: {{host}}/Breakfasts/{{id}}
 ```
 
 ## Get Breakfast
-
 ### Get Breakfast Request
 
 ```js
@@ -164,6 +167,68 @@ GET /breakfasts/{{id}}
         "Cookie"
     ]
 }
+```
+
+## Get All Breakfasts
+### Get All Breakfasts Request
+```js
+GET /breakfasts/all
+```
+### Get All Breakfasts Response
+```json
+[
+  {
+    "id": "76c09d83-4556-4b3c-a7ce-f555d33b5044",
+    "name": "Vegan Sunshine 2: Electric Boogaloo",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-01T14:31:45.3427281Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  },
+  {
+    "id": "68cbf0f7-b5e0-4195-b7c1-9231869ef8e0",
+    "name": "eeeeeee",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-01T15:15:10.1079259Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  },
+  {
+    "id": "ba26da11-fdec-41a5-abe8-c2bcc3becfbc",
+    "name": "eeeeeee",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-01T15:15:18.1055275Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  }
+]
 ```
 
 ## Update Breakfast
@@ -208,6 +273,22 @@ or
 Location: {{host}}/Breakfasts/{{id}}
 ```
 
+## Rename Breakfast
+### Rename Breakfast Request
+```js
+PATCH /breakfasts/{{id}}
+```
+```js
+{
+    "name":"New breakfast name"
+}
+```
+
+## Rename Breakfast Response
+```js
+204 No Content
+```
+
 ## Delete Breakfast
 
 ### Delete Breakfast Request
@@ -238,4 +319,4 @@ This is an educational project. The source code is licensed under the MIT licens
 
 # License
 
-This project is licensed under the terms of the [MIT](https://github.com/amantinband/buber-breakfast/blob/main/LICENSE) license.
+This project is licensed under the terms of the [MIT](https://github.com/aidbar/buber-breakfast-aidbar/blob/main/LICENSE) license.
