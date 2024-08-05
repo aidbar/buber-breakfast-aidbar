@@ -2,7 +2,7 @@ POST http://localhost:5286/breakfasts
 Content-Type: application/json
 
 {
-    "name": "eeeeeee",
+    "name": "bce",
     "description": "A cozy cafe with a variety of breakfast options and a bakery.",
     "startDateTime": "2022-04-08T08:00:00",
     "endDateTime": "2022-04-08T11:00:00",

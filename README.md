@@ -32,6 +32,9 @@
   - [Rename Breakfast](#rename-breakfast)
     - [Rename Breakfast Request](#rename-breakfast-request)
     - [Rename Breakfast Response](#rename-breakfast-response)
+  - [Search Breakfasts](#search-breakfasts)
+    - [Search Breakfasts Request](#search-breakfasts-request)
+    - [Search Breakfasts Response](#search-breakfasts-response)
   - [Delete Breakfast](#delete-breakfast)
     - [Delete Breakfast Request](#delete-breakfast-request)
     - [Delete Breakfast Response](#delete-breakfast-response)
@@ -287,6 +290,69 @@ PATCH /breakfasts/{{id}}
 ### Rename Breakfast Response
 ```js
 204 No Content
+```
+
+## Search Breakfasts
+### Search Breakfasts Request
+```js
+GET /breakfasts/search?query=bc
+```
+
+### Search Breakfasts Response
+```json
+[
+  {
+    "id": "76d6becb-3e7f-458a-a8f5-1d59c9276065",
+    "name": "abc",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-05T15:56:27.1477421Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  },
+  {
+    "id": "ce5217ab-6df4-48b7-859f-3debd8e76d7c",
+    "name": "bcd",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-05T15:56:35.9981575Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  },
+  {
+    "id": "55ae3e99-2a10-4e75-8a1e-9a4e56a9798f",
+    "name": "bce",
+    "description": "A cozy cafe with a variety of breakfast options and a bakery.",
+    "startDateTime": "2022-04-08T08:00:00",
+    "endDateTime": "2022-04-08T11:00:00",
+    "lastModifiedDateTime": "2024-08-05T15:56:47.8728027Z",
+    "savory": [
+      "Oatmeal",
+      "Avocado Toast",
+      "Omelette",
+      "Salad"
+    ],
+    "sweet": [
+      "Cookie"
+    ]
+  }
+]
 ```
 
 ## Delete Breakfast
